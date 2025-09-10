@@ -3,21 +3,20 @@ import { Header } from '@/components/Header';
 import { PostsLists } from '@/components/PostsLists';
 import { SpinLoader } from '@/components/SpinLoader';
 import { Suspense } from 'react';
+import { PostFeatured } from '@/components/PostFeatured';
 
 export default async function HomePage() {
   return (
       <Container>
-        <header>
-          <h1 className='text-6xl font-bold text-center py-8'>Aqui é a HEADER</h1>
-        </header>
+        <Header/>
 
+        <Suspense fallback={<SpinLoader />}>
+          <PostFeatured />
+        </Suspense>
+        
         <Suspense fallback={<SpinLoader />}>
           <PostsLists />
         </Suspense>
-
-        <footer>
-          <p className="text-6xl font-bold text-center py-8">Footer</p>
-        </footer>
     </Container>
   );
 }
