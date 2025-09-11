@@ -1,6 +1,7 @@
 import clsx from "clsx"
 import Link from "next/link"
 
+
 type PostHeadingProps = {
   children: React.ReactNode
   url: string

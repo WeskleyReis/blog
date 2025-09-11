@@ -5,6 +5,7 @@ import { SpinLoader } from '@/components/SpinLoader';
 import { Suspense } from 'react';
 import { PostFeatured } from '@/components/PostFeatured';
 
+
 export default async function HomePage() {
   return (
       <Container>
@@ -13,7 +14,7 @@ export default async function HomePage() {
         <Suspense fallback={<SpinLoader />}>
           <PostFeatured />
         </Suspense>
-        
+
         <Suspense fallback={<SpinLoader />}>
           <PostsLists />
         </Suspense>
