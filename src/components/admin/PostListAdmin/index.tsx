@@ -2,8 +2,8 @@ import { deletePostAction } from "@/actions/post/delete-post-action"
 import { findAllPostAdmin } from "@/lib/post/queries/admin"
 import clsx from "clsx"
 import Link from "next/link"
-import { DeletePostButton } from "../admin/DeletePostButton"
-import ErrorMessage from "../ErrorMessage"
+import { DeletePostButton } from "../DeletePostButton"
+import ErrorMessage from "../../ErrorMessage"
 
 export default async function PostListAdmin() {
   const posts = await findAllPostAdmin()
