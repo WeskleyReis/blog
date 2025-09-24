@@ -8,6 +8,7 @@ import { logColor } from "@/utils/log-color"
 import { eq } from "drizzle-orm"
 import { revalidateTag } from "next/cache"
 
+
 export async function deletePostAction(id: string) {
   // TODO: checar login do usuário
 
@@ -32,7 +33,6 @@ export async function deletePostAction(id: string) {
   // TODO: mover este metodo para o repositório
   await drizzleDb.delete(postsTable).where(eq(postsTable.id, id))
 
-  // TODO: revalidateTag ou revalidatePath
   revalidateTag('posts')
   revalidateTag(`post-${post.slug}`)
 
