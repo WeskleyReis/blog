@@ -2,16 +2,16 @@
 
 import { makePartialPublicPost, makePublicPostFromDb, PublicPost } from "@/dto/post/dto"
 import { PostUpdateSchema } from "@/lib/post/validations"
-import { PostModel } from "@/models/post/post-model"
 import { postRepository } from "@/repositories/post"
 import { getZodErrorMessages } from "@/utils/get-zoid-error-messages"
+import { makeRandomString } from "@/utils/make-random-string"
 import { revalidateTag } from "next/cache"
 
 
 type UpdatePostActionState = {
   formState: PublicPost
   errors: string[]
-  success?: true
+  success?: string
 }
 
 export async function updatePostAction(
@@ -74,6 +74,6 @@ export async function updatePostAction(
   return {
     formState: makePublicPostFromDb(post),
     errors: [],
-    success: true
+    success: makeRandomString()
   }
 }
