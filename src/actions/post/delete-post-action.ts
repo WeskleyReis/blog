@@ -22,16 +22,20 @@ export async function deletePostAction(id: string) {
     }
   }
 
-  const post = await postRepository.findById(id).catch(() => undefined)
+  let post
+  try {
+    post = await postRepository.delete(id)
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      return {
+        error: e.message,
+      }
+    }
 
-  if (!post) {
     return {
-      error: 'Post não existe'
+      error: 'Erro desconhecido'
     }
   }
-
-  // TODO: mover este metodo para o repositório
-  await drizzleDb.delete(postsTable).where(eq(postsTable.id, id))
 
   revalidateTag('posts')
   revalidateTag(`post-${post.slug}`)
